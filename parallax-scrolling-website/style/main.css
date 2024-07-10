@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --index: calc(1vw + 1vh);
+  --text-color: #e7e6d3;
+}
+
+@font-face {
+  font-family: raleway_f;
+  src: url(../fonts/raleway-regular.woff2);
+}
+
+@font-face {
+  font-family: raleway_f;
+  src: url(../fonts/raleway-black.woff2);
+  font-weight: 900;
+}
+
+body {
+  color: white;
+  font-family: "raleway_f", sans-serif;
+  line-height: 1.55;
+  background-color: white;
+}
+
+.main-header {
+  position: relative;
+}
+
+.main-header::after {
+  content: "";
+  position: absolute;
+  bottom: calc(var(--index) * -4);
+  z-index: 100;
+  background-image: url(../img/ground.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  inline-size: 100%;
+  block-size: calc(var(--index) * 10);
+}
+
+.layers {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-align: center;
+  block-size: 100vh;
+}
+
+.layer {
+  position: absolute;
+  z-index: 2;
+  background: no-repeat center / cover;
+  block-size: 100%;
+  inline-size: 100%;
+  will-change: transform;
+}
+
+.layer__base {
+  z-index: 0;
+  transform: translate3d(0, calc(var(--scrollTop) / 1.5), 0);
+}
+
+.layer__middle {
+  transform: translate3d(0, calc(var(--scrollTop) / 2.8), 0);
+}
+
+.layer__front {
+  transform: translate3d(0, calc(var(--scrollTop) / 7), 0);
+}
+
+.layer__header {
+  z-index: 1;
+  padding-inline: 15px;
+  color: var(--text-color);
+  font-weight: 900;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px #e6e29c;
+  transform: translate3d(0, calc(var(--scrollTop) / 1.8), 0);
+  will-change: transform;
+}
+
+.layer__title {
+  font-size: calc(var(--index) * 2.5);
+  letter-spacing: calc(var(--index) / 2);
+}
+
+.layer__caption {
+  font-size: calc(var(--index) / 1.3);
+  letter-spacing: calc(var(--index) / 3);
+}
+
+.main-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  text-align: center;
+  background: no-repeat center / cover;
+  min-block-size: 100vh;
+  position: relative;
+}
+
+.main-article__content {
+  max-width: 100vw;
+}
+
+.main-article__header {
+  text-transform: uppercase;
+  font-size: calc(var(--index) * 1.5);
+  letter-spacing: calc(var(--index) / 3);
+}
+
+.main-article__text {
+  max-width: calc(100vw - 30%);
+  justify-content: center;
+}
+
+.copyright {
+  position: absolute;
+  inset-block-end: 15px;
+  opacity: 0.5;
+  letter-spacing: calc(var(--index) / 7);
+}
